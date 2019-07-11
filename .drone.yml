@@ -59,6 +59,10 @@ steps:
       from_secret: DOCKER_PASSWORD
     TAG: ${DRONE_TAG:-master}
   commands:
+    - echo $REPO
+    - echo ${REPO}
+    - echo $$REPO
+    - echo $${REPO}
     - manifest-tool push from-args
         --username $DOCKER_USERNAME
         --password $DOCKER_PASSWORD
