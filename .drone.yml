@@ -41,7 +41,7 @@ steps:
     tags: ${DRONE_TAG:-master}-arm64
 
 ---
-kind:
+kind: pipeline
 name: manifest
 
 platform:
