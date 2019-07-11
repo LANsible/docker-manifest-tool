@@ -50,14 +50,14 @@ platform:
 
 steps:
 - name: manifest-versioned
-  image: lansible/${DRONE_TAG:-1.0.0-rc3}-amd64
+  image: lansible/${DRONE_TAG:-master}-amd64
   environment:
     REPO: lansible/manifest-tool
     DOCKER_USERNAME:
       from_secret: DOCKER_USERNAME
     DOCKER_PASSWORD:
       from_secret: DOCKER_PASSWORD
-    TAG: ${DRONE_TAG:-1.0.0-rc3}
+    TAG: ${DRONE_TAG:-master}
   commands:
   - echo "${DOCKER_PASSWORD}"
     | docker login -u "${DOCKER_USERNAME}" --password-stdin
@@ -71,7 +71,7 @@ steps:
     - master
 
 - name: manifest-latest
-  image: lansible/${DRONE_TAG:-1.0.0-rc3}-amd64
+  image: lansible/${DRONE_TAG:-master}-amd64
   environment:
     REPO: lansible/manifest-tool
     DOCKER_USERNAME:
