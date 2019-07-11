@@ -59,11 +59,10 @@ steps:
       from_secret: DOCKER_PASSWORD
     TAG: ${DRONE_TAG:-master}
   commands:
-    - echo $REPO
-    - echo "$REPO"
-    - manifest-tool push from-args
+    - manifest-tool
         --username "$DOCKER_USERNAME"
         --password "$DOCKER_PASSWORD"
+      push from-args
         --ignore-missing
         --platforms linux/amd64,linux/arm64
         --template "$REPO:$TAG-ARCH"
@@ -82,13 +81,14 @@ steps:
       from_secret: DOCKER_PASSWORD
     TAG: ${DRONE_TAG:-master}
   commands:
-  - manifest-tool push from-args
-      --username $DOCKER_USERNAME
-      --password $DOCKER_PASSWORD
+  - manifest-tool
+      --username "$DOCKER_USERNAME"
+      --password "$DOCKER_PASSWORD"
+    push from-args
       --ignore-missing
       --platforms linux/amd64,linux/arm64
-      --template $REPO:$TAG-ARCH
-      --target $REPO:latest
+      --template "$REPO:$TAG-ARCH"
+      --target "$REPO:$TAG"
   when:
     event:
     - tag
