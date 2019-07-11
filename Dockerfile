@@ -4,7 +4,7 @@ ARG VERSION=1.0.0-rc3
 # Install docker client-only
 RUN set -o pipefail && \
     wget -qO- "https://download.docker.com/linux/static/stable/$(arch)/docker-18.09.7.tgz" | \
-      tar -zxC "/usr/bin/" --strip-components=1 docker/docker
+      tar -zxC "/usr/local/bin/" --strip-components=1 docker/docker
 
 # Install manifest-tool
 RUN if [[ $(arch) == "aarch64" ]]; then \
