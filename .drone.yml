@@ -50,7 +50,7 @@ platform:
 
 steps:
 - name: manifest-versioned
-  image: lansible/${DRONE_TAG:-master}-amd64
+  image: lansible/manifest-tool:${DRONE_TAG:-master}-amd64
   environment:
     REPO: lansible/manifest-tool
     DOCKER_USERNAME:
@@ -71,7 +71,7 @@ steps:
     - master
 
 - name: manifest-latest
-  image: lansible/${DRONE_TAG:-master}-amd64
+  image: lansible/manifest-tool:${DRONE_TAG:-master}-amd64
   environment:
     REPO: lansible/manifest-tool
     DOCKER_USERNAME:
