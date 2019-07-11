@@ -50,55 +50,33 @@ platform:
 
 steps:
 - name: manifest-versioned
-  image: lansible/manifest-tool:${DRONE_TAG:-master}-amd64
-  pull: always
-  environment:
-    REPO: lansible/manifest-tool
-    DOCKER_USERNAME:
+  image: plugins/docker
+  settings:
+    username:
       from_secret: DOCKER_USERNAME
-    DOCKER_PASSWORD:
+    password:
       from_secret: DOCKER_PASSWORD
-    TAG: ${DRONE_TAG:-master}
-  commands:
-  - echo "$DOCKER_PASSWORD"
-    | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker pull $REPO:$TAG-amd64
-  - docker pull $REPO:$TAG-arm64
-  - manifest-tool
-      --username "$DOCKER_USERNAME"
-      --password "$DOCKER_PASSWORD"
-    push from-args
-      --ignore-missing
-      --platforms linux/amd64,linux/arm64
-      --template "$REPO:$TAG-ARCH"
-      --target "$REPO:$TAG"
+    target: lansible/manifest-tool:${DRONE_TAG:-master}
+    template: lansible/manifest-tool:${DRONE_TAG:-master}-ARCH
+    platforms:
+      - linux/amd64
+      - linux/arm64
   when:
     branch:
     - master
 
 - name: manifest-latest
-  image: lansible/manifest-tool:${DRONE_TAG:-master}-amd64
-  pull: always
-  environment:
-    REPO: lansible/manifest-tool
-    DOCKER_USERNAME:
+  image: plugins/docker
+  settings:
+    username:
       from_secret: DOCKER_USERNAME
-    DOCKER_PASSWORD:
+    password:
       from_secret: DOCKER_PASSWORD
-    TAG: ${DRONE_TAG:-master}
-  commands:
-  - echo "$DOCKER_PASSWORD"
-    | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker pull $REPO:$TAG-amd64
-  - docker pull $REPO:$TAG-arm64
-  - manifest-tool
-      --username "$DOCKER_USERNAME"
-      --password "$DOCKER_PASSWORD"
-    push from-args
-      --ignore-missing
-      --platforms linux/amd64,linux/arm64
-      --template "$REPO:$TAG-ARCH"
-      --target "$REPO:$TAG"
+    target: lansible/manifest-tool:latest
+    template: lansible/manifest-tool:${DRONE_TAG:-master}-ARCH
+    platforms:
+      - linux/amd64
+      - linux/arm64
   when:
     event:
     - tag
