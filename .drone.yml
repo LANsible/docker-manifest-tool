@@ -60,16 +60,14 @@ steps:
     TAG: ${DRONE_TAG:-master}
   commands:
     - echo $REPO
-    - echo ${REPO}
-    - echo $$REPO
-    - echo $${REPO}
+    - echo "$REPO"
     - manifest-tool push from-args
-        --username $DOCKER_USERNAME
-        --password $DOCKER_PASSWORD
+        --username "$DOCKER_USERNAME"
+        --password "$DOCKER_PASSWORD"
         --ignore-missing
         --platforms linux/amd64,linux/arm64
-        --template $REPO:$TAG-ARCH
-        --target $REPO:$TAG
+        --template "$REPO:$TAG-ARCH"
+        --target "$REPO:$TAG"
   when:
     branch:
     - master
