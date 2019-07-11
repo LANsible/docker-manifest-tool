@@ -40,53 +40,61 @@ steps:
       - VERSION=${DRONE_TAG:-1.0.0-rc3}
     tags: ${DRONE_TAG:-master}-arm64
 
----
-kind: pipeline
-name: manifest
+# ---
+# kind: pipeline
+# name: manifest
 
-platform:
-  os: linux
-  arch: amd64
+# platform:
+#   os: linux
+#   arch: amd64
 
-steps:
-- name: manifest-versioned
-  image: lansible/${DRONE_TAG:-master}-amd64
-  environment:
-    REPO: lansible/manifest-tool
-    DOCKER_USERNAME:
-      from_secret: DOCKER_USERNAME
-    DOCKER_PASSWORD:
-      from_secret: DOCKER_PASSWORD
-    TAG: ${DRONE_TAG:-1.0.0-rc3}
-  command:
-    - echo "${DOCKER_PASSWORD}"
-      | docker login -u "${DOCKER_USERNAME}" --password-stdin
-    - manifest-tool push from-args
-        --ignore-missing
-        --platforms linux/amd64,linux/arm64,linux/386
-        --template ${REPO}:${TAG}-ARCH
-        --target ${REPO}:${TAG}
-  when:
-    branch:
-    - master
+# steps:
+# - name: manifest-versioned
+#   image: lansible/${DRONE_TAG:-master}-amd64
+#   environment:
+#     REPO: lansible/manifest-tool
+#     DOCKER_USERNAME:
+#       from_secret: DOCKER_USERNAME
+#     DOCKER_PASSWORD:
+#       from_secret: DOCKER_PASSWORD
+#     TAG: ${DRONE_TAG:-1.0.0-rc3}
+#   command:
+#     - echo "${DOCKER_PASSWORD}"
+#       | docker login -u "${DOCKER_USERNAME}" --password-stdin
+#     - manifest-tool push from-args
+#         --ignore-missing
+#         --platforms linux/amd64,linux/arm64,linux/386
+#         --template ${REPO}:${TAG}-ARCH
+#         --target ${REPO}:${TAG}
+#   when:
+#     branch:
+#     - master
 
-- name: manifest-latest
-  image: lansible/${DRONE_TAG:-master}-amd64
-  environment:
-    REPO: lansible/manifest-tool
-    DOCKER_USERNAME:
-      from_secret: DOCKER_USERNAME
-    DOCKER_PASSWORD:
-      from_secret: DOCKER_PASSWORD
-    TAG: ${DRONE_TAG:-1.0.0-rc3}
-  command:
-    - echo "${DOCKER_PASSWORD}"
-      | docker login -u "${DOCKER_USERNAME}" --password-stdin
-    - manifest-tool push from-args
-        --ignore-missing
-        --platforms linux/amd64,linux/arm64,linux/386
-        --template ${REPO}:${TAG}-ARCH
-        --target ${REPO}:${TAG}
-  when:
-    event:
-    - tag
+# - name: manifest-latest
+#   image: lansible/${DRONE_TAG:-master}-amd64
+#   environment:
+#     REPO: lansible/manifest-tool
+#     DOCKER_USERNAME:
+#       from_secret: DOCKER_USERNAME
+#     DOCKER_PASSWORD:
+#       from_secret: DOCKER_PASSWORD
+#     TAG: ${DRONE_TAG:-1.0.0-rc3}
+#   command:
+#     - echo "${DOCKER_PASSWORD}"
+#       | docker login -u "${DOCKER_USERNAME}" --password-stdin
+#     - manifest-tool push from-args
+#         --ignore-missing
+#         --platforms linux/amd64,linux/arm64,linux/386
+#         --template ${REPO}:${TAG}-ARCH
+#         --target ${REPO}:${TAG}
+#   when:
+#     event:
+#     - tag
+
+# depends_on:
+# - amd64
+# - arm64
+
+# trigger:
+#   branch:
+#   - master
