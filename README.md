@@ -1,3 +1,11 @@
+# Note
+
+Just found that Drone CI has a plugin for this:
+
+http://plugins.drone.io/drone-plugins/drone-manifest/
+
+So I am not using this image anymore :)
+
 # Manifest-tool
 
 Manifest-tool in Dockerfile!
