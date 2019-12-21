@@ -1,11 +1,6 @@
-FROM alpine:3.10
-ARG VERSION=1.0.0-rc3
+FROM docker:19
 
-# Install docker client-only, ca-certificates are needed for SSL regisitries
-RUN apk add --no-cache ca-certificates && \
-    set -o pipefail && \
-    wget -qO- "https://download.docker.com/linux/static/stable/$(arch)/docker-18.09.7.tgz" | \
-      tar -zxC "/usr/local/bin/" --strip-components=1 docker/docker
+ENV VERSION=1.0.0
 
 # Install manifest-tool
 RUN if [[ $(arch) == "aarch64" ]]; then \
