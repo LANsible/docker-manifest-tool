@@ -1,8 +1,8 @@
 # Manifest-tool
-[![pipeline status](https://gitlab.com/lansible1/docker-nfs-client-provisioner/badges/master/pipeline.svg)](https://gitlab.com/lansible1/docker-nfs-client-provisioner/-/commits/master)
-[![Docker Pulls](https://img.shields.io/docker/pulls/lansible/nfs-client-provisioner.svg)](https://hub.docker.com/r/lansible/nfs-client-provisioner)
-[![Docker Version](https://images.microbadger.com/badges/version/lansible/nfs-client-provisioner:latest.svg)](https://microbadger.com/images/lansible/nfs-client-provisioner:latest)
-[![Docker Size/Layers](https://images.microbadger.com/badges/image/lansible/nfs-client-provisioner:latest.svg)](https://microbadger.com/images/lansible/nfs-client-provisioner:latest)
+[![pipeline status](https://gitlab.com/lansible1/docker-manifest-tool/badges/master/pipeline.svg)](https://gitlab.com/lansible1/docker-manifest-tool/-/commits/master)
+[![Docker Pulls](https://img.shields.io/docker/pulls/lansible/manifest-tool.svg)](https://hub.docker.com/r/lansible/manifest-tool)
+[![Docker Version](https://images.microbadger.com/badges/version/lansible/manifest-tool:latest.svg)](https://microbadger.com/images/lansible/manifest-tool:latest)
+[![Docker Size/Layers](https://images.microbadger.com/badges/image/lansible/manifest-tool:latest.svg)](https://microbadger.com/images/lansible/manifest-tool:latest)
 
 Manifest-tool in Dockerfile!
 
