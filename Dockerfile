@@ -1,6 +1,6 @@
 FROM docker:19
 
-ENV VERSION=v1.0.2
+ENV VERSION=v1.0.3
 
 # Add description
 LABEL org.label-schema.description="Docker:19 with manifest-tool included"
